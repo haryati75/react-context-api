@@ -3,6 +3,7 @@ import './App.css';
 
 import ProductContext from "./ProductContext";
 import ProductListing from "./components/ProductListing";
+import AddProduct from './components/AddProduct';
 
 class App extends React.Component {
   state = {
@@ -29,6 +30,16 @@ class App extends React.Component {
     const context = {
       getProducts: () => {
         return this.state.products;
+      },
+      addProduct: (productName, cost) => {
+        let id = Math.floor(Math.random() * 10000 + 9999);
+        this.setState({
+          'products': [...this.state.products, {
+            id,
+            product_name: productName,
+            cost
+          }]
+        })
       }
     }
 
@@ -36,6 +47,7 @@ class App extends React.Component {
       <ProductContext.Provider value={context}>
         <React.Fragment>
           <ProductListing />
+          <AddProduct />
         </React.Fragment>
       </ProductContext.Provider>
     )
