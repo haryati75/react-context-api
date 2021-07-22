@@ -8,7 +8,7 @@ export default function ProductListing() {
         <React.Fragment>
             <ul>
                 {context.getProducts().map(p => 
-                    <li>{p.product_name}</li>
+                    <li key={p.id}>{p.product_name}</li>
                 )}
             </ul>
         </React.Fragment>
