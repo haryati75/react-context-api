@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
+import ProductListingPage from './pages/ProductListingPage';
 import ProductProvider from './ProductProvider';
-import ProductListing from "./components/ProductListing";
-import AddProduct from './components/AddProduct';
 
 class App extends React.Component {
   state = {}
@@ -11,12 +11,19 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className="App container-fluid">
-        <ProductProvider>
-            <ProductListing />
-            <AddProduct />
+
+      <React.Fragment>
+        <ProductProvider >
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <ProductListingPage />
+              </Route>
+            </Switch>
+          </Router>
         </ProductProvider>
-      </div>
+      </React.Fragment>
+
     )
   }
 }
